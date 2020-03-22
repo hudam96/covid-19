@@ -9,8 +9,11 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "countup.js": "^2.0.4",
+    "echarts": "^4.7.0",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
+    "vue-countup-v2": "^4.0.0",
     "vue-router": "^3.1.5",
     "vuetify": "^2.2.11"
   },
