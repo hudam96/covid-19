@@ -2,11 +2,11 @@
     <v-app class="background">
         <loader v-if="isLoading"></loader>
         <div v-else>
-            <v-img height="400" :aspect-ratio="16/9" class="mb-n12 pa-n12" src="@/assets/hospital.jpeg">
-                <v-row align="start" class="lightbox white--text pa-2 fill-height">
-                    <v-col>
-                        <div  ><h1  style="background-color: rgba(255,0,0,0.1) ; width: 400px ;height: 60px; color: #5474A5">مستجدات فايروس كوفيد-19</h1></div>
-                        <div class="mt-4"><h4 class="blue-grey--text text--lighten-1"><v-icon color="red">mdi-map-marker</v-icon>العراق</h4></div>
+            <v-img height="500" :aspect-ratio="16/9" class="mb-n12 pa-n12" src="@/assets/doctor.jpg">
+                <v-row align="center" class="lightbox white--text pa-2 fill-height">
+                    <v-col align="center" class="mt-n12">
+                        <div  ><h1 class="blue-grey--text text--darken-2 font-weight-thin" style="font-size: 50px">مستجدات فايروس كوفيد-19</h1></div>
+                        <div class="mt-4"><h3 class="blue-grey--text text--lighten-1"><v-icon color="red">mdi-map-marker</v-icon>العراق</h3></div>
                     </v-col>
                 </v-row>
             </v-img>
@@ -53,7 +53,9 @@
                 <!-- section 2 -->
                 <v-row>
                     <v-col>
-                        <line-chart :iraq-chart-data="iraq" :world-chart-data="allCountries" :iraq-death-percentage="iraqDeathPercentage"></line-chart>
+                        <line-chart :iraq-chart-data="iraq"  :iraq-death-percentage="iraqDeathPercentage"
+                                    :world-death-percentage="worldDeathPercentage"
+                        ></line-chart>
                     </v-col>
                     <v-col cols="12" md="4">
                         <pie-chart :chart-data="deathsAndRecovered"></pie-chart>
@@ -72,7 +74,7 @@
         components : {loader ,card, pieChart, lineChart},
         data(){
           return{
-              allCountries : [],
+              allCountries : {},
               iraq : [],
               isLoading : true,
               totalConfirmed : null,
@@ -85,7 +87,6 @@
                 this.$http.get("https://pomber.github.io/covid19/timeseries.json").then(res=>{
                     this.allCountries = res.data
                     this.iraq = res.data.Iraq
-                    console.log(this.iraq)
                     this.totalConfirmed = this.iraq[this.iraq.length -1].confirmed
                     this.totalDeaths =   this.iraq[this.iraq.length -1].deaths
                     this.totalRecovered =   this.iraq[this.iraq.length -1].recovered
@@ -100,17 +101,26 @@
             totalDeathStatus(){
               if((parseInt(this.iraq[this.iraq.length -1].deaths) - parseInt(this.iraq[this.iraq.length -2].deaths) >= 1)){
                   return "up"
-              }else return "down"
+              }else if((parseInt(this.iraq[this.iraq.length -1].deaths) - parseInt(this.iraq[this.iraq.length -2].deaths) == 0)){
+                  return "noChange"
+              }
+              else return "down"
             },
             totalRecoveredStatus(){
                 if((parseInt(this.iraq[this.iraq.length -1].recovered) - parseInt(this.iraq[this.iraq.length -2].recovered) >= 1)){
                     return "up"
-                }else return "down"
+                }else if((parseInt(this.iraq[this.iraq.length -1].recovered) - parseInt(this.iraq[this.iraq.length -2].recovered) == 0)){
+                    return "noChange"
+                }
+                else return "down"
             },
             totalConfirmedStatus(){
                 if((parseInt(this.iraq[this.iraq.length -1].confirmed) - parseInt(this.iraq[this.iraq.length -2].confirmed) >= 1)){
                     return "up"
-                }else return "down"
+                }else if((parseInt(this.iraq[this.iraq.length -1].confirmed) - parseInt(this.iraq[this.iraq.length -2].confirmed) == 0)){
+                    return "noChange"
+                }
+                else return "down"
             },
             deathsAndRecovered(){
                let activeStatues = this.totalConfirmed- this.totalDeaths - this.totalRecovered
@@ -123,11 +133,27 @@
             iraqDeathPercentage(){
                let value = (this.iraq[this.iraq.length -1].deaths/this.iraq[this.iraq.length -1].confirmed)*100
                 return value.toFixed(1)
+            },
+            worldDeathPercentage(){
+                var contriesData = Object.values(this.allCountries)
+                var deaths = 0
+                var confirmed = 0
+                contriesData.forEach( item =>{
+                    deaths = deaths + item[item.length -1].deaths
+                })
+                contriesData.forEach( item =>{
+                    confirmed = confirmed + item[item.length -1].confirmed
+                })
+                var value = (deaths/confirmed)*100
+                console.log(value)
+                return value.toFixed(1)
+
             }
 
         },
         mounted() {
            this.getCountries()
+
         }
     }
 </script>

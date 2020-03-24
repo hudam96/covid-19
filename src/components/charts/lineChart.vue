@@ -9,10 +9,18 @@
                     <v-row justify="end">
                         <v-col cols="12" md="3">
                             <v-col>
-                                <h1 class="grey--text text--darken-3 font-weight-medium">{{iraqDeathPercentage}}%</h1>
+                                <h1  class="grey--text text--darken-1 font-weight-medium">{{iraqDeathPercentage}}%</h1>
                             </v-col>
                             <v-col class="mt-n6 grey--text text--lighten-1">
                                 <h6>نسبة الوفيات في العراق</h6>
+                            </v-col>
+                        </v-col>
+                        <v-col cols="12" md="3">
+                            <v-col>
+                                <h1  class="grey--text text--darken-1 font-weight-medium">{{worldDeathPercentage}}%</h1>
+                            </v-col>
+                            <v-col class="mt-n6 grey--text text--lighten-1">
+                                <h6>نسبة الوفيات في العالم</h6>
                             </v-col>
                         </v-col>
                     </v-row>
@@ -37,9 +45,9 @@
     export default {
         props: {
             iraqChartData: Array,
-            worldChartData : Array,
             cardTitle: String,
-            iraqDeathPercentage : String
+            iraqDeathPercentage : String,
+            worldDeathPercentage : String
         },
         methods: {
             showChart() {

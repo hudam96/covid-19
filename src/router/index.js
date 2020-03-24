@@ -6,8 +6,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Statistics',
-    component: ()=> import('../pages/Statistics/_index')
+    name: 'statistics',
+    component: ()=> import('../pages/statistics/_index')
   },
 ]
 
