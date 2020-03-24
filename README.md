@@ -1,8 +1,15 @@
 
 # covid-19
-## montaring covid-19 virus in Iraq 
-### []show totlal numbers of new status
-### [] show totlal numbers of comformed status
+### Description 
+web app that monitoring the last statistics of  statuses suffering from covid-19 " corona virus "
+### Features
+* show totlal numbers of new statues
+* show totlal numbers of comformed statues
+* show totlal numbers of death statues 
+* number of death statues in each day 
+### Technologyes 
+* vue.js 
+* vuetify
 
 
 ## Project setup
