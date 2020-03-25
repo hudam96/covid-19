@@ -4,7 +4,7 @@
 web app that monitoring the last statistics of  statuses suffering from covid-19 " corona virus "
 ### Features
 * show total numbers of new statuses
-* show total numbers of comformed statuses
+* show total numbers of comfermed statuses
 * show total numbers of death statuses
 * number of death statuses in each day 
 ### Technologies 
