@@ -7,7 +7,7 @@ web app that monitoring the last statistics of  statuses suffering from covid-19
 * show total numbers of comformed statuses
 * show total numbers of death statuses
 * number of death statuses in each day 
-### Technologyies 
+### Technologies 
 * vue.js 
 * vuetify
 
