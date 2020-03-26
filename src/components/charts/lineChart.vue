@@ -1,5 +1,5 @@
 <template>
-    <v-card flat height="408px">
+    <v-card  height="408px">
         <v-card-title class="mb-n12">
             <v-row>
                 <v-col cols="12" md="2">

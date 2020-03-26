@@ -1,45 +1,49 @@
 <template>
-        <v-card flat>
-            <v-card-title>
-                <v-container >
-                    <v-row class="mt-n4">
-                        <v-col cols="2">
-                            <v-icon
-                                    class="icon-shape"
-                                    :class="cardIconColor"
-                                    color="white"
-                            >{{cardIconName}}
+    <v-card >
+        <v-card-title>
+            <v-container >
+                <v-row class="mt-n4">
+                    <v-col cols="2">
+                        <v-icon
+                                class="icon-shape"
+                                :class="cardIconColor"
+                                color="white"
+                        >{{cardIconName}}
+                        </v-icon>
+                    </v-col>
+                    <v-col class="mt-2 mr-2">
+                        <h6  class="grey--text text--lighten-1" >{{cardTitle}}</h6>
+                    </v-col>
+                </v-row>
+                <v-row class="ma-n4 mt-2">
+                    <v-col class="text-center">
+                        <h1 class="grey--text text--darken-1 font-weight-medium">
+                            <v-icon class="mt-n4" v-if="status === 'down' && cardValue!= null " color="red">
+                                mdi-menu-down
                             </v-icon>
-                        </v-col>
-                        <v-col class="mt-2 mr-2">
-                            <h6  class="grey--text text--lighten-1" >{{cardTitle}}</h6>
-                        </v-col>
-                    </v-row>
-                    <v-row class="ma-n4 mt-2">
-                        <v-col class="text-center">
-                            <h1 class="grey--text text--darken-1 font-weight-medium">
-                                <v-icon class="mt-n4" v-if="status === 'down' " color="red">
-                                    mdi-menu-down
-                                </v-icon>
-                                <v-icon  class="mt-n4" color="green" v-if="status === 'up'">
-                                    mdi-menu-up
-                                </v-icon>
-                                <ICountUp
-                                        :startVal="startVal"
-                                        :endVal="parseInt(cardValue.toLocaleString())"
-                                        :decimals="decimals"
-                                        :duration="duration"
-                                        :options="options"
-                                />
-                            </h1>
-                        </v-col>
-                    </v-row>
-                </v-container>
-            </v-card-title>
-            <v-card-text>
+                            <v-icon  class="mt-n4" color="green" v-if="status === 'up' && cardValue!= null">
+                                mdi-menu-up
+                            </v-icon>
+                            <h5 v-if="cardValue === null" class="font-weight-medium">
+                                لا توجد بيانات
+                            </h5>
+                            <ICountUp
+                                    v-else
+                                    :startVal="startVal"
+                                    :endVal="parseInt(cardValue.toLocaleString())"
+                                    :decimals="decimals"
+                                    :duration="duration"
+                                    :options="options"
+                            />
+                        </h1>
+                    </v-col>
+                </v-row>
+            </v-container>
+        </v-card-title>
+        <v-card-text>
 
-            </v-card-text>
-        </v-card>
+        </v-card-text>
+    </v-card>
 </template>
 <script>
     import ICountUp from 'vue-countup-v2';

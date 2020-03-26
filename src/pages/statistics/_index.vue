@@ -12,6 +12,7 @@
             </v-img>
             <v-container fluid class="pa-n12">
                 <!-- section 1 -->
+                <!-- section 1 -->
                 <v-row class="mt-n12">
                     <v-col cols="12" md="3">
                         <card card-title="الاصابات الجديدة"

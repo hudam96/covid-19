@@ -1,5 +1,5 @@
 <template>
-        <v-card flat>
+        <v-card >
             <v-card-text>
                 <v-row>
                     <v-flex class="mr-4">
