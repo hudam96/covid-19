@@ -3,11 +3,11 @@
 ### Description 
 web app that monitoring the last statistics of  statuses suffering from covid-19 " corona virus "
 ### Features
-* show totlal numbers of new statues
-* show totlal numbers of comformed statues
-* show totlal numbers of death statues 
-* number of death statues in each day 
-### Technologyes 
+* show total numbers of new statuses
+* show total numbers of comfermed statuses
+* show total numbers of death statuses
+* number of death statuses in each day 
+### Technologies 
 * vue.js 
 * vuetify
 
